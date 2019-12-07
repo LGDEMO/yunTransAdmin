@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.Gquery_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.Gquery_tab">
+    <id column="gq_id" jdbcType="INTEGER" property="gqId" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="appkey" jdbcType="VARCHAR" property="appkey" />
+    <result column="save_name" jdbcType="VARCHAR" property="saveName" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    gq_id, type, appkey, save_name, time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gquery_tab
+    where gq_id = #{gqId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gquery_tab
+    where gq_id = #{gqId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.Gquery_tab">
+    insert into gquery_tab (gq_id, type, appkey, 
+      save_name, time)
+    values (#{gqId,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{appkey,jdbcType=VARCHAR}, 
+      #{saveName,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.Gquery_tab">
+    insert into gquery_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gqId != null">
+        gq_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="appkey != null">
+        appkey,
+      </if>
+      <if test="saveName != null">
+        save_name,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gqId != null">
+        #{gqId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="appkey != null">
+        #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="saveName != null">
+        #{saveName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.Gquery_tab">
+    update gquery_tab
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="appkey != null">
+        appkey = #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="saveName != null">
+        save_name = #{saveName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where gq_id = #{gqId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.Gquery_tab">
+    update gquery_tab
+    set type = #{type,jdbcType=CHAR},
+      appkey = #{appkey,jdbcType=VARCHAR},
+      save_name = #{saveName,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP}
+    where gq_id = #{gqId,jdbcType=INTEGER}
+  </update>
+</mapper>

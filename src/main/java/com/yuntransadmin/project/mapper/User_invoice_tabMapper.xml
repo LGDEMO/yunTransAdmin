@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.User_invoice_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.User_invoice_tab">
+    <id column="invoice_id" jdbcType="VARCHAR" property="invoiceId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="invoicetitle_id" jdbcType="VARCHAR" property="invoicetitleId" />
+    <result column="address_id" jdbcType="VARCHAR" property="addressId" />
+    <result column="invoice_amount" jdbcType="VARCHAR" property="invoiceAmount" />
+    <result column="relate_order" jdbcType="VARCHAR" property="relateOrder" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="invoice_status" jdbcType="VARCHAR" property="invoiceStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    invoice_id, user_id, invoicetitle_id, address_id, invoice_amount, relate_order, time, 
+    invoice_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_invoice_tab
+    where invoice_id = #{invoiceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_invoice_tab
+    where invoice_id = #{invoiceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.User_invoice_tab">
+    insert into user_invoice_tab (invoice_id, user_id, invoicetitle_id, 
+      address_id, invoice_amount, relate_order, 
+      time, invoice_status)
+    values (#{invoiceId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{invoicetitleId,jdbcType=VARCHAR}, 
+      #{addressId,jdbcType=VARCHAR}, #{invoiceAmount,jdbcType=VARCHAR}, #{relateOrder,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{invoiceStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.User_invoice_tab">
+    insert into user_invoice_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="invoiceId != null">
+        invoice_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="invoicetitleId != null">
+        invoicetitle_id,
+      </if>
+      <if test="addressId != null">
+        address_id,
+      </if>
+      <if test="invoiceAmount != null">
+        invoice_amount,
+      </if>
+      <if test="relateOrder != null">
+        relate_order,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="invoiceStatus != null">
+        invoice_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="invoiceId != null">
+        #{invoiceId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicetitleId != null">
+        #{invoicetitleId,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null">
+        #{addressId,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceAmount != null">
+        #{invoiceAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="relateOrder != null">
+        #{relateOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceStatus != null">
+        #{invoiceStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.User_invoice_tab">
+    update user_invoice_tab
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicetitleId != null">
+        invoicetitle_id = #{invoicetitleId,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null">
+        address_id = #{addressId,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceAmount != null">
+        invoice_amount = #{invoiceAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="relateOrder != null">
+        relate_order = #{relateOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceStatus != null">
+        invoice_status = #{invoiceStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where invoice_id = #{invoiceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.User_invoice_tab">
+    update user_invoice_tab
+    set user_id = #{userId,jdbcType=VARCHAR},
+      invoicetitle_id = #{invoicetitleId,jdbcType=VARCHAR},
+      address_id = #{addressId,jdbcType=VARCHAR},
+      invoice_amount = #{invoiceAmount,jdbcType=VARCHAR},
+      relate_order = #{relateOrder,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      invoice_status = #{invoiceStatus,jdbcType=VARCHAR}
+    where invoice_id = #{invoiceId,jdbcType=VARCHAR}
+  </update>
+</mapper>

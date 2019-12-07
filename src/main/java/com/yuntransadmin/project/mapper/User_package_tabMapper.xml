@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.User_package_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.User_package_tab">
+    <id column="user_package_id" jdbcType="VARCHAR" property="userPackageId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="package_id" jdbcType="INTEGER" property="packageId" />
+    <result column="total_charnumber" jdbcType="VARCHAR" property="totalCharnumber" />
+    <result column="used_charnumber" jdbcType="VARCHAR" property="usedCharnumber" />
+    <result column="package_status" jdbcType="VARCHAR" property="packageStatus" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_package_id, user_id, package_id, total_charnumber, used_charnumber, package_status, 
+    start_time, end_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_package_tab
+    where user_package_id = #{userPackageId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_package_tab
+    where user_package_id = #{userPackageId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.User_package_tab">
+    insert into user_package_tab (user_package_id, user_id, package_id, 
+      total_charnumber, used_charnumber, package_status, 
+      start_time, end_time)
+    values (#{userPackageId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{packageId,jdbcType=INTEGER}, 
+      #{totalCharnumber,jdbcType=VARCHAR}, #{usedCharnumber,jdbcType=VARCHAR}, #{packageStatus,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.User_package_tab">
+    insert into user_package_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userPackageId != null">
+        user_package_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="packageId != null">
+        package_id,
+      </if>
+      <if test="totalCharnumber != null">
+        total_charnumber,
+      </if>
+      <if test="usedCharnumber != null">
+        used_charnumber,
+      </if>
+      <if test="packageStatus != null">
+        package_status,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userPackageId != null">
+        #{userPackageId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="packageId != null">
+        #{packageId,jdbcType=INTEGER},
+      </if>
+      <if test="totalCharnumber != null">
+        #{totalCharnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="usedCharnumber != null">
+        #{usedCharnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="packageStatus != null">
+        #{packageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.User_package_tab">
+    update user_package_tab
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="packageId != null">
+        package_id = #{packageId,jdbcType=INTEGER},
+      </if>
+      <if test="totalCharnumber != null">
+        total_charnumber = #{totalCharnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="usedCharnumber != null">
+        used_charnumber = #{usedCharnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="packageStatus != null">
+        package_status = #{packageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_package_id = #{userPackageId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.User_package_tab">
+    update user_package_tab
+    set user_id = #{userId,jdbcType=VARCHAR},
+      package_id = #{packageId,jdbcType=INTEGER},
+      total_charnumber = #{totalCharnumber,jdbcType=VARCHAR},
+      used_charnumber = #{usedCharnumber,jdbcType=VARCHAR},
+      package_status = #{packageStatus,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP}
+    where user_package_id = #{userPackageId,jdbcType=VARCHAR}
+  </update>
+</mapper>

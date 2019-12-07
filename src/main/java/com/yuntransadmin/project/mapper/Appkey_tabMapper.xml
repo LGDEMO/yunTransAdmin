@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.Appkey_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.Appkey_tab">
+    <id column="appkey" jdbcType="VARCHAR" property="appkey" />
+    <result column="total_char" jdbcType="INTEGER" property="totalChar" />
+    <result column="used_char" jdbcType="INTEGER" property="usedChar" />
+    <result column="total_trans" jdbcType="INTEGER" property="totalTrans" />
+    <result column="used_trans" jdbcType="INTEGER" property="usedTrans" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="user_status" jdbcType="VARCHAR" property="userStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    appkey, total_char, used_char, total_trans, used_trans, remarks, user_status, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from appkey_tab
+    where appkey = #{appkey,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from appkey_tab
+    where appkey = #{appkey,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.Appkey_tab">
+    insert into appkey_tab (appkey, total_char, used_char, 
+      total_trans, used_trans, remarks, 
+      user_status, create_time)
+    values (#{appkey,jdbcType=VARCHAR}, #{totalChar,jdbcType=INTEGER}, #{usedChar,jdbcType=INTEGER}, 
+      #{totalTrans,jdbcType=INTEGER}, #{usedTrans,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, 
+      #{userStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.Appkey_tab">
+    insert into appkey_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appkey != null">
+        appkey,
+      </if>
+      <if test="totalChar != null">
+        total_char,
+      </if>
+      <if test="usedChar != null">
+        used_char,
+      </if>
+      <if test="totalTrans != null">
+        total_trans,
+      </if>
+      <if test="usedTrans != null">
+        used_trans,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appkey != null">
+        #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="totalChar != null">
+        #{totalChar,jdbcType=INTEGER},
+      </if>
+      <if test="usedChar != null">
+        #{usedChar,jdbcType=INTEGER},
+      </if>
+      <if test="totalTrans != null">
+        #{totalTrans,jdbcType=INTEGER},
+      </if>
+      <if test="usedTrans != null">
+        #{usedTrans,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.Appkey_tab">
+    update appkey_tab
+    <set>
+      <if test="totalChar != null">
+        total_char = #{totalChar,jdbcType=INTEGER},
+      </if>
+      <if test="usedChar != null">
+        used_char = #{usedChar,jdbcType=INTEGER},
+      </if>
+      <if test="totalTrans != null">
+        total_trans = #{totalTrans,jdbcType=INTEGER},
+      </if>
+      <if test="usedTrans != null">
+        used_trans = #{usedTrans,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where appkey = #{appkey,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.Appkey_tab">
+    update appkey_tab
+    set total_char = #{totalChar,jdbcType=INTEGER},
+      used_char = #{usedChar,jdbcType=INTEGER},
+      total_trans = #{totalTrans,jdbcType=INTEGER},
+      used_trans = #{usedTrans,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where appkey = #{appkey,jdbcType=VARCHAR}
+  </update>
+</mapper>

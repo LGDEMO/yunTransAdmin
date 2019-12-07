@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.Ol_translation_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.Ol_translation_tab">
+    <id column="translation_id" jdbcType="INTEGER" property="translationId" />
+    <result column="appkey" jdbcType="VARCHAR" property="appkey" />
+    <result column="ip_addr" jdbcType="VARCHAR" property="ipAddr" />
+    <result column="src_lang" jdbcType="VARCHAR" property="srcLang" />
+    <result column="tgt_lang" jdbcType="VARCHAR" property="tgtLang" />
+    <result column="src_text" jdbcType="VARCHAR" property="srcText" />
+    <result column="tgt_text" jdbcType="VARCHAR" property="tgtText" />
+    <result column="package_id" jdbcType="VARCHAR" property="packageId" />
+    <result column="char_length" jdbcType="INTEGER" property="charLength" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    translation_id, appkey, ip_addr, src_lang, tgt_lang, src_text, tgt_text, package_id, 
+    char_length, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ol_translation_tab
+    where translation_id = #{translationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ol_translation_tab
+    where translation_id = #{translationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.Ol_translation_tab">
+    insert into ol_translation_tab (translation_id, appkey, ip_addr, 
+      src_lang, tgt_lang, src_text, 
+      tgt_text, package_id, char_length, 
+      create_time)
+    values (#{translationId,jdbcType=INTEGER}, #{appkey,jdbcType=VARCHAR}, #{ipAddr,jdbcType=VARCHAR}, 
+      #{srcLang,jdbcType=VARCHAR}, #{tgtLang,jdbcType=VARCHAR}, #{srcText,jdbcType=VARCHAR}, 
+      #{tgtText,jdbcType=VARCHAR}, #{packageId,jdbcType=VARCHAR}, #{charLength,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.Ol_translation_tab">
+    insert into ol_translation_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="translationId != null">
+        translation_id,
+      </if>
+      <if test="appkey != null">
+        appkey,
+      </if>
+      <if test="ipAddr != null">
+        ip_addr,
+      </if>
+      <if test="srcLang != null">
+        src_lang,
+      </if>
+      <if test="tgtLang != null">
+        tgt_lang,
+      </if>
+      <if test="srcText != null">
+        src_text,
+      </if>
+      <if test="tgtText != null">
+        tgt_text,
+      </if>
+      <if test="packageId != null">
+        package_id,
+      </if>
+      <if test="charLength != null">
+        char_length,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="translationId != null">
+        #{translationId,jdbcType=INTEGER},
+      </if>
+      <if test="appkey != null">
+        #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddr != null">
+        #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="srcLang != null">
+        #{srcLang,jdbcType=VARCHAR},
+      </if>
+      <if test="tgtLang != null">
+        #{tgtLang,jdbcType=VARCHAR},
+      </if>
+      <if test="srcText != null">
+        #{srcText,jdbcType=VARCHAR},
+      </if>
+      <if test="tgtText != null">
+        #{tgtText,jdbcType=VARCHAR},
+      </if>
+      <if test="packageId != null">
+        #{packageId,jdbcType=VARCHAR},
+      </if>
+      <if test="charLength != null">
+        #{charLength,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.Ol_translation_tab">
+    update ol_translation_tab
+    <set>
+      <if test="appkey != null">
+        appkey = #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddr != null">
+        ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="srcLang != null">
+        src_lang = #{srcLang,jdbcType=VARCHAR},
+      </if>
+      <if test="tgtLang != null">
+        tgt_lang = #{tgtLang,jdbcType=VARCHAR},
+      </if>
+      <if test="srcText != null">
+        src_text = #{srcText,jdbcType=VARCHAR},
+      </if>
+      <if test="tgtText != null">
+        tgt_text = #{tgtText,jdbcType=VARCHAR},
+      </if>
+      <if test="packageId != null">
+        package_id = #{packageId,jdbcType=VARCHAR},
+      </if>
+      <if test="charLength != null">
+        char_length = #{charLength,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where translation_id = #{translationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.Ol_translation_tab">
+    update ol_translation_tab
+    set appkey = #{appkey,jdbcType=VARCHAR},
+      ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      src_lang = #{srcLang,jdbcType=VARCHAR},
+      tgt_lang = #{tgtLang,jdbcType=VARCHAR},
+      src_text = #{srcText,jdbcType=VARCHAR},
+      tgt_text = #{tgtText,jdbcType=VARCHAR},
+      package_id = #{packageId,jdbcType=VARCHAR},
+      char_length = #{charLength,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where translation_id = #{translationId,jdbcType=INTEGER}
+  </update>
+</mapper>

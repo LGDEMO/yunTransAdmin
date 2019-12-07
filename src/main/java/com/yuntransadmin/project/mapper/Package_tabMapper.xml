@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.Package_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.Package_tab">
+    <id column="package_id" jdbcType="INTEGER" property="packageId" />
+    <result column="package_name" jdbcType="VARCHAR" property="packageName" />
+    <result column="charnumber" jdbcType="VARCHAR" property="charnumber" />
+    <result column="delay_time" jdbcType="VARCHAR" property="delayTime" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="del" jdbcType="VARCHAR" property="del" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    package_id, package_name, charnumber, delay_time, price, del
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from package_tab
+    where package_id = #{packageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from package_tab
+    where package_id = #{packageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.Package_tab">
+    insert into package_tab (package_id, package_name, charnumber, 
+      delay_time, price, del
+      )
+    values (#{packageId,jdbcType=INTEGER}, #{packageName,jdbcType=VARCHAR}, #{charnumber,jdbcType=VARCHAR}, 
+      #{delayTime,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{del,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.Package_tab">
+    insert into package_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="packageId != null">
+        package_id,
+      </if>
+      <if test="packageName != null">
+        package_name,
+      </if>
+      <if test="charnumber != null">
+        charnumber,
+      </if>
+      <if test="delayTime != null">
+        delay_time,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="packageId != null">
+        #{packageId,jdbcType=INTEGER},
+      </if>
+      <if test="packageName != null">
+        #{packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="charnumber != null">
+        #{charnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="delayTime != null">
+        #{delayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.Package_tab">
+    update package_tab
+    <set>
+      <if test="packageName != null">
+        package_name = #{packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="charnumber != null">
+        charnumber = #{charnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="delayTime != null">
+        delay_time = #{delayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where package_id = #{packageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.Package_tab">
+    update package_tab
+    set package_name = #{packageName,jdbcType=VARCHAR},
+      charnumber = #{charnumber,jdbcType=VARCHAR},
+      delay_time = #{delayTime,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      del = #{del,jdbcType=VARCHAR}
+    where package_id = #{packageId,jdbcType=INTEGER}
+  </update>
+</mapper>

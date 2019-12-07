@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- 指定连接数据库的JDBC驱动包所在位置，指定到你本机的完整路径 -->
+    <classPathEntry location="E:\Maven\Repository\mysql\mysql-connector-java\8.0.13\mysql-connector-java-5.1.43.jar"/>
+
+    <!-- 配置table表信息内容体，targetRuntime指定采用MyBatis3的版本 -->
+    <context id="tables" targetRuntime="MyBatis3">
+
+        <!-- 抑制生成注释，由于生成的注释都是英文的，可以不让它生成 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 配置数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://222.197.219.6:3306/yuntrans"
+                        userId="ligang"
+                        password="Ligang_123">
+        </jdbcConnection>
+
+        <!-- 生成model类，targetPackage指定model类的包名， targetProject指定生成的model放在eclipse的哪个工程下面-->
+        <javaModelGenerator targetPackage="com.yuntransadmin.project.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <!-- 生成MyBatis的Mapper.xml文件，targetPackage指定mapper.xml文件的包名， targetProject指定生成的mapper.xml放在eclipse的哪个工程下面 -->
+        <sqlMapGenerator targetPackage="com.yuntransadmin.project.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- 生成MyBatis的Mapper接口类文件,targetPackage指定Mapper接口类的包名， targetProject指定生成的Mapper接口放在eclipse的哪个工程下面 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.yuntransadmin.project.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- 数据库表名及对应的Java模型类名 -->
+        <table tableName="apk_tab"
+               domainObjectName="Apk_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="appkey_tab"
+               domainObjectName="Appkey_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="gquery_tab"
+               domainObjectName="Gquery_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="invoice_status_dict"
+               domainObjectName="Invoice_status_dict"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="ol_translation_tab"
+               domainObjectName="Ol_translation_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="option_dict"
+               domainObjectName="Option_dict"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="order_invoice_status_dict"
+               domainObjectName="Order_invoice_status_dict"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="order_status_dict"
+               domainObjectName="Order_status_dict"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="package_tab"
+               domainObjectName="Package_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="pkg_status_dict"
+               domainObjectName="Pkg_status_dict"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+        <table tableName="purchase_order_tab"
+               domainObjectName="Purchase_order_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+        <table tableName="report_tab"
+               domainObjectName="Report_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="sys_memory_tab"
+               domainObjectName="Sys_memory_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+        <table tableName="translator_status_dict"
+               domainObjectName="Translator_status_dict"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_address_tab"
+               domainObjectName="User_address_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_invoice_tab"
+               domainObjectName="User_invoice_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_invoicetitle_tab"
+               domainObjectName="User_invoicetitle_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+        <table tableName="user_log_tab"
+               domainObjectName="User_log_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_memory_tab"
+               domainObjectName="User_memory_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_package_tab"
+               domainObjectName="User_package_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_status_dict"
+               domainObjectName="User_status_dict"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_tab"
+               domainObjectName="User_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="wechat_order_tab"
+               domainObjectName="Wechat_order_tab"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+    </context>
+
+</generatorConfiguration>

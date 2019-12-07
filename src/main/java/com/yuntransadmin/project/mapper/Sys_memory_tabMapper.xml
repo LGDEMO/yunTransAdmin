@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.Sys_memory_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.Sys_memory_tab">
+    <id column="vocab_id" jdbcType="INTEGER" property="vocabId" />
+    <result column="src_text_hash" jdbcType="VARCHAR" property="srcTextHash" />
+    <result column="src_lang" jdbcType="VARCHAR" property="srcLang" />
+    <result column="tgt_lang" jdbcType="VARCHAR" property="tgtLang" />
+    <result column="src_text" jdbcType="VARCHAR" property="srcText" />
+    <result column="tgt_text" jdbcType="VARCHAR" property="tgtText" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="del" jdbcType="VARCHAR" property="del" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    vocab_id, src_text_hash, src_lang, tgt_lang, src_text, tgt_text, time, del
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_memory_tab
+    where vocab_id = #{vocabId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_memory_tab
+    where vocab_id = #{vocabId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.Sys_memory_tab">
+    insert into sys_memory_tab (vocab_id, src_text_hash, src_lang, 
+      tgt_lang, src_text, tgt_text, 
+      time, del)
+    values (#{vocabId,jdbcType=INTEGER}, #{srcTextHash,jdbcType=VARCHAR}, #{srcLang,jdbcType=VARCHAR}, 
+      #{tgtLang,jdbcType=VARCHAR}, #{srcText,jdbcType=VARCHAR}, #{tgtText,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{del,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.Sys_memory_tab">
+    insert into sys_memory_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="vocabId != null">
+        vocab_id,
+      </if>
+      <if test="srcTextHash != null">
+        src_text_hash,
+      </if>
+      <if test="srcLang != null">
+        src_lang,
+      </if>
+      <if test="tgtLang != null">
+        tgt_lang,
+      </if>
+      <if test="srcText != null">
+        src_text,
+      </if>
+      <if test="tgtText != null">
+        tgt_text,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="vocabId != null">
+        #{vocabId,jdbcType=INTEGER},
+      </if>
+      <if test="srcTextHash != null">
+        #{srcTextHash,jdbcType=VARCHAR},
+      </if>
+      <if test="srcLang != null">
+        #{srcLang,jdbcType=VARCHAR},
+      </if>
+      <if test="tgtLang != null">
+        #{tgtLang,jdbcType=VARCHAR},
+      </if>
+      <if test="srcText != null">
+        #{srcText,jdbcType=VARCHAR},
+      </if>
+      <if test="tgtText != null">
+        #{tgtText,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.Sys_memory_tab">
+    update sys_memory_tab
+    <set>
+      <if test="srcTextHash != null">
+        src_text_hash = #{srcTextHash,jdbcType=VARCHAR},
+      </if>
+      <if test="srcLang != null">
+        src_lang = #{srcLang,jdbcType=VARCHAR},
+      </if>
+      <if test="tgtLang != null">
+        tgt_lang = #{tgtLang,jdbcType=VARCHAR},
+      </if>
+      <if test="srcText != null">
+        src_text = #{srcText,jdbcType=VARCHAR},
+      </if>
+      <if test="tgtText != null">
+        tgt_text = #{tgtText,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vocab_id = #{vocabId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.Sys_memory_tab">
+    update sys_memory_tab
+    set src_text_hash = #{srcTextHash,jdbcType=VARCHAR},
+      src_lang = #{srcLang,jdbcType=VARCHAR},
+      tgt_lang = #{tgtLang,jdbcType=VARCHAR},
+      src_text = #{srcText,jdbcType=VARCHAR},
+      tgt_text = #{tgtText,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      del = #{del,jdbcType=VARCHAR}
+    where vocab_id = #{vocabId,jdbcType=INTEGER}
+  </update>
+</mapper>

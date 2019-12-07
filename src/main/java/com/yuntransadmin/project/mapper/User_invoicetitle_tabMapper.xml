@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.User_invoicetitle_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.User_invoicetitle_tab">
+    <id column="invoicetitle_id" jdbcType="VARCHAR" property="invoicetitleId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="invoice_type" jdbcType="VARCHAR" property="invoiceType" />
+    <result column="invoice_type2" jdbcType="VARCHAR" property="invoiceType2" />
+    <result column="taxnumber" jdbcType="VARCHAR" property="taxnumber" />
+    <result column="bankname" jdbcType="VARCHAR" property="bankname" />
+    <result column="banknumber" jdbcType="VARCHAR" property="banknumber" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="default_code" jdbcType="VARCHAR" property="defaultCode" />
+    <result column="del" jdbcType="VARCHAR" property="del" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    invoicetitle_id, user_id, title, invoice_type, invoice_type2, taxnumber, bankname, 
+    banknumber, address, phone, time, default_code, del
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_invoicetitle_tab
+    where invoicetitle_id = #{invoicetitleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_invoicetitle_tab
+    where invoicetitle_id = #{invoicetitleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.User_invoicetitle_tab">
+    insert into user_invoicetitle_tab (invoicetitle_id, user_id, title, 
+      invoice_type, invoice_type2, taxnumber, 
+      bankname, banknumber, address, 
+      phone, time, default_code, 
+      del)
+    values (#{invoicetitleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{invoiceType,jdbcType=VARCHAR}, #{invoiceType2,jdbcType=VARCHAR}, #{taxnumber,jdbcType=VARCHAR}, 
+      #{bankname,jdbcType=VARCHAR}, #{banknumber,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{defaultCode,jdbcType=VARCHAR}, 
+      #{del,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.User_invoicetitle_tab">
+    insert into user_invoicetitle_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="invoicetitleId != null">
+        invoicetitle_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="invoiceType != null">
+        invoice_type,
+      </if>
+      <if test="invoiceType2 != null">
+        invoice_type2,
+      </if>
+      <if test="taxnumber != null">
+        taxnumber,
+      </if>
+      <if test="bankname != null">
+        bankname,
+      </if>
+      <if test="banknumber != null">
+        banknumber,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="defaultCode != null">
+        default_code,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="invoicetitleId != null">
+        #{invoicetitleId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType != null">
+        #{invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType2 != null">
+        #{invoiceType2,jdbcType=VARCHAR},
+      </if>
+      <if test="taxnumber != null">
+        #{taxnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null">
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="banknumber != null">
+        #{banknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="defaultCode != null">
+        #{defaultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.User_invoicetitle_tab">
+    update user_invoicetitle_tab
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType != null">
+        invoice_type = #{invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType2 != null">
+        invoice_type2 = #{invoiceType2,jdbcType=VARCHAR},
+      </if>
+      <if test="taxnumber != null">
+        taxnumber = #{taxnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null">
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="banknumber != null">
+        banknumber = #{banknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="defaultCode != null">
+        default_code = #{defaultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where invoicetitle_id = #{invoicetitleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.User_invoicetitle_tab">
+    update user_invoicetitle_tab
+    set user_id = #{userId,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      invoice_type = #{invoiceType,jdbcType=VARCHAR},
+      invoice_type2 = #{invoiceType2,jdbcType=VARCHAR},
+      taxnumber = #{taxnumber,jdbcType=VARCHAR},
+      bankname = #{bankname,jdbcType=VARCHAR},
+      banknumber = #{banknumber,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      default_code = #{defaultCode,jdbcType=VARCHAR},
+      del = #{del,jdbcType=VARCHAR}
+    where invoicetitle_id = #{invoicetitleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.User_address_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.User_address_tab">
+    <id column="address_id" jdbcType="VARCHAR" property="addressId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="default_code" jdbcType="VARCHAR" property="defaultCode" />
+    <result column="del" jdbcType="VARCHAR" property="del" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    address_id, user_id, name, phone, address, detail, time, default_code, del
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_address_tab
+    where address_id = #{addressId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_address_tab
+    where address_id = #{addressId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.User_address_tab">
+    insert into user_address_tab (address_id, user_id, name, 
+      phone, address, detail, 
+      time, default_code, del
+      )
+    values (#{addressId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{defaultCode,jdbcType=VARCHAR}, #{del,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.User_address_tab">
+    insert into user_address_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="addressId != null">
+        address_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="defaultCode != null">
+        default_code,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="addressId != null">
+        #{addressId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="defaultCode != null">
+        #{defaultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.User_address_tab">
+    update user_address_tab
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="defaultCode != null">
+        default_code = #{defaultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where address_id = #{addressId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.User_address_tab">
+    update user_address_tab
+    set user_id = #{userId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      default_code = #{defaultCode,jdbcType=VARCHAR},
+      del = #{del,jdbcType=VARCHAR}
+    where address_id = #{addressId,jdbcType=VARCHAR}
+  </update>
+</mapper>

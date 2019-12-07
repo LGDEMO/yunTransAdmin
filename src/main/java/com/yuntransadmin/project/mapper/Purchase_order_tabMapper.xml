@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.Purchase_order_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.Purchase_order_tab">
+    <id column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="package_id" jdbcType="VARCHAR" property="packageId" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="del" jdbcType="VARCHAR" property="del" />
+    <result column="invoice" jdbcType="VARCHAR" property="invoice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, user_id, package_id, order_status, pay_type, time, del, invoice
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_order_tab
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from purchase_order_tab
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.Purchase_order_tab">
+    insert into purchase_order_tab (order_id, user_id, package_id, 
+      order_status, pay_type, time, 
+      del, invoice)
+    values (#{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{packageId,jdbcType=VARCHAR}, 
+      #{orderStatus,jdbcType=VARCHAR}, #{payType,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{del,jdbcType=VARCHAR}, #{invoice,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.Purchase_order_tab">
+    insert into purchase_order_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="packageId != null">
+        package_id,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+      <if test="invoice != null">
+        invoice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="packageId != null">
+        #{packageId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=VARCHAR},
+      </if>
+      <if test="invoice != null">
+        #{invoice,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.Purchase_order_tab">
+    update purchase_order_tab
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="packageId != null">
+        package_id = #{packageId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=VARCHAR},
+      </if>
+      <if test="invoice != null">
+        invoice = #{invoice,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.Purchase_order_tab">
+    update purchase_order_tab
+    set user_id = #{userId,jdbcType=VARCHAR},
+      package_id = #{packageId,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      del = #{del,jdbcType=VARCHAR},
+      invoice = #{invoice,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+</mapper>

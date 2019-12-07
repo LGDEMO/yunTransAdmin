@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuntransadmin.project.mapper.User_log_tabMapper">
+  <resultMap id="BaseResultMap" type="com.yuntransadmin.project.model.User_log_tab">
+    <id column="option_id" jdbcType="INTEGER" property="optionId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="option_type" jdbcType="VARCHAR" property="optionType" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    option_id, user_id, option_type, time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_log_tab
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_log_tab
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yuntransadmin.project.model.User_log_tab">
+    insert into user_log_tab (option_id, user_id, option_type, 
+      time)
+    values (#{optionId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{optionType,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuntransadmin.project.model.User_log_tab">
+    insert into user_log_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="optionId != null">
+        option_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="optionType != null">
+        option_type,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="optionId != null">
+        #{optionId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="optionType != null">
+        #{optionType,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuntransadmin.project.model.User_log_tab">
+    update user_log_tab
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="optionType != null">
+        option_type = #{optionType,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuntransadmin.project.model.User_log_tab">
+    update user_log_tab
+    set user_id = #{userId,jdbcType=VARCHAR},
+      option_type = #{optionType,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP}
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </update>
+</mapper>
