@@ -70,7 +70,6 @@ public class UserController {
     public Map getUserList() {
         Map resulMap = new HashMap<>();
 
-
         return resulMap;
     }
 
